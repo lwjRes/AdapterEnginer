@@ -4,13 +4,13 @@ import java.util.List;
 
 /**
  * Created:2018/6/4
- * User：liuwenjie
- * Email:liuwnejie180423@credithc.com
+ * User：lwjfork
+ * Email:lwjfork@gmail.com
  * Des:
  * ====================
  */
 
-public interface IMultipleListDelegateManager<T> extends IMulitipleType<T> {
+public interface IMultipleListDelegateManager<T> extends IMultipleType<T> {
 
 
     int getTypeCount();

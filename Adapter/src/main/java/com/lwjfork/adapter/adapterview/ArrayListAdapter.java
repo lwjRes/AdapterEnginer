@@ -10,8 +10,8 @@ import java.util.List;
 
 /**
  * Created:2018/5/21
- * User：liuwenjie
- * Email:liuwnejie180423@credithc.com
+ * User：lwjfork
+ * Email:lwjfork@gmail.com
  * Des:
  * ====================
  */
@@ -116,7 +116,7 @@ public abstract class ArrayListAdapter<T> extends BaseAdapter {
         return mData.indexOf(data);
     }
 
-
+    @SuppressWarnings("unchecked")
     public List<T> array2ArrayList(T... objects) {
         return Arrays.asList(objects);
     }

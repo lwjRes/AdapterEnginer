@@ -8,8 +8,8 @@ import java.util.List;
 
 /**
  * Created:2018/6/4
- * User：liuwenjie
- * Email:liuwnejie180423@credithc.com
+ * User：lwjfork
+ * Email:lwjfork@gmail.com
  * Des:
  * ====================
  */
@@ -42,12 +42,15 @@ public class DefaultMultipleListDelegateManager<T> implements IMultipleListDeleg
                 return item.getView(position, convertView, parent, data);
             }
         }
-        return null;
+        throw new IllegalArgumentException();
     }
 
     @Override
     public int getTypeCount() {
-        return items.size() + 1;
+        if (items == null || items.size() <= 0) {
+            return 1;
+        }
+        return items.size();
     }
 
 
@@ -61,6 +64,6 @@ public class DefaultMultipleListDelegateManager<T> implements IMultipleListDeleg
                 return i;
             }
         }
-        return count;
+        throw new IllegalArgumentException();
     }
 }
