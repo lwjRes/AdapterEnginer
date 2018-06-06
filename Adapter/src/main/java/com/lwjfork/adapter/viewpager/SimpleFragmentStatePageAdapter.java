@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created:2018/5/21
@@ -17,9 +18,9 @@ import java.util.ArrayList;
 public class SimpleFragmentStatePageAdapter<T extends Fragment> extends FragmentStatePagerAdapter {
 
 
-    private ArrayList<T> fragments = new ArrayList<>();
+    private List<T> fragments = new ArrayList<>();
 
-    private ArrayList<CharSequence> titles = new ArrayList<>();
+    private List<CharSequence> titles = new ArrayList<>();
 
 
     public SimpleFragmentStatePageAdapter(FragmentManager fm) {

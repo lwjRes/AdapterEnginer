@@ -35,10 +35,6 @@ public class SimplePageAdapter extends PagerAdapter {
         return this;
     }
 
-    @SuppressWarnings("UnusedReturnValue")
-    public SimplePageAdapter addTitle(int titleRes) {
-        return addTitle(getResStr(titleRes));
-    }
 
     @SuppressWarnings("UnusedReturnValue")
     public SimplePageAdapter addTitles(List<CharSequence> titles) {
@@ -52,10 +48,6 @@ public class SimplePageAdapter extends PagerAdapter {
         return this;
     }
 
-    @SuppressWarnings("UnusedReturnValue")
-    public SimplePageAdapter addItem(View itemView, int titleRes) {
-        return addItem(itemView, getResStr(titleRes));
-    }
 
     @SuppressWarnings("UnusedReturnValue")
     public SimplePageAdapter addItem(View itemView, CharSequence charSequence) {
@@ -111,7 +103,5 @@ public class SimplePageAdapter extends PagerAdapter {
         container.removeView(views.get(position));
     }
 
-    public String getResStr(int resId) {
-        return null;
-    }
+
 }
