@@ -1,6 +1,16 @@
 package com.lwjfork.adapter;
 
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.AppCompatAutoCompleteTextView;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatCheckBox;
+import android.support.v7.widget.AppCompatCheckedTextView;
+import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.AppCompatMultiAutoCompleteTextView;
+import android.support.v7.widget.AppCompatRadioButton;
+import android.support.v7.widget.AppCompatSeekBar;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewStub;
@@ -34,11 +44,15 @@ import android.widget.ViewFlipper;
  * ====================
  */
 
-public interface IFindViewHelper {
+public interface IViewHelper {
 
     @SuppressWarnings("unchecked")
     <T extends View> T findViewByID(int viewId);
 
+    @SuppressWarnings("unchecked")
+    default <T extends View> T findViewByID(View parent, int viewId) {
+        return (T) parent.findViewById(viewId);
+    }
 
     default android.support.v4.widget.Space findSpaceV4ById(int viewId) {
         return findViewByID(viewId);
@@ -143,4 +157,52 @@ public interface IFindViewHelper {
     default ViewFlipper findViewFlipperById(int viewId) {
         return findViewByID(viewId);
     }
+
+    default AppCompatTextView findAppCompatTextViewById(int viewId) {
+        return findViewByID(viewId);
+    }
+
+    default AppCompatEditText finAppCompatEditTextById(int viewId) {
+        return findViewByID(viewId);
+    }
+
+    default AppCompatAutoCompleteTextView findAppCompatAutoCompleteTextViewById(int viewId) {
+        return findViewByID(viewId);
+    }
+
+    default AppCompatMultiAutoCompleteTextView findAppCompatMultiAutoCompleteTextViewById(int viewId) {
+        return findViewByID(viewId);
+    }
+
+    default AppCompatCheckedTextView findAppCompatCheckedTextViewById(int viewId) {
+        return findViewByID(viewId);
+    }
+
+    default AppCompatButton findAppCompatButtonId(int viewId) {
+        return findViewByID(viewId);
+    }
+
+    default AppCompatImageView findAppCompatImageViewById(int viewId) {
+        return findViewByID(viewId);
+    }
+
+    default AppCompatCheckBox findAppCompatCheckBoxById(int viewId) {
+        return findViewByID(viewId);
+    }
+
+    default AppCompatRadioButton findAppCompatRadioButtonById(int viewId) {
+        return findViewByID(viewId);
+    }
+
+    default AppCompatSeekBar findAppCompatSeekBarById(int viewId) {
+        return findViewByID(viewId);
+    }
+
+
+    default <T extends View> void setOnClickListener(T view, View.OnClickListener listener) {
+        view.setOnClickListener(listener);
+    }
+
+
+
 }

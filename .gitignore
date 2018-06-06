@@ -21,8 +21,6 @@ gradle
 /.idea/workspace.xml
 /.idea/libraries/*
 build
-gradlew
-gradlew.bat
 
 # Maven
 target

@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.lwjfork.adapter.IFindAppCompatViewHelper;
+import com.lwjfork.adapter.IViewHelper;
 
 /**
  * Created:2018/6/1
@@ -16,7 +16,7 @@ import com.lwjfork.adapter.IFindAppCompatViewHelper;
  * ====================
  */
 
-public class SimpleRecycleViewHolder extends RecyclerView.ViewHolder implements IFindAppCompatViewHelper {
+public final class SimpleRecycleViewHolder extends RecyclerView.ViewHolder implements IViewHelper {
 
 
     public static SimpleRecycleViewHolder getViewHolder(ViewGroup parent, int layoutId) {
@@ -30,10 +30,10 @@ public class SimpleRecycleViewHolder extends RecyclerView.ViewHolder implements 
     }
 
 
-    private SparseArrayCompat<View> views = new SparseArrayCompat<>();
+    private final SparseArrayCompat<View> views = new SparseArrayCompat<>();
 
 
-    public View getConvertView() {
+    public final View getConvertView() {
         return itemView;
     }
 
@@ -50,8 +50,8 @@ public class SimpleRecycleViewHolder extends RecyclerView.ViewHolder implements 
     }
 
     @SuppressWarnings("unchecked")
-    protected <T extends View> T putViewById(int viewId) {
-        T tView = (T) itemView.findViewById(viewId);
+    protected final <T extends View> T putViewById(int viewId) {
+        T tView = findViewByID(itemView, viewId);
         views.put(viewId, tView);
         return tView;
     }

@@ -5,8 +5,7 @@ import android.support.v4.util.SparseArrayCompat;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.lwjfork.adapter.IFindAppCompatViewHelper;
-import com.lwjfork.adapter.IFindViewHelper;
+import com.lwjfork.adapter.IViewHelper;
 
 /**
  * Created:2018/5/30
@@ -16,7 +15,7 @@ import com.lwjfork.adapter.IFindViewHelper;
  * ====================
  */
 
-public class SimpleViewHolder implements IFindAppCompatViewHelper {
+public final class SimpleViewHolder implements IViewHelper {
 
 
     private SparseArrayCompat<View> views = new SparseArrayCompat<>();
@@ -61,8 +60,8 @@ public class SimpleViewHolder implements IFindAppCompatViewHelper {
     }
 
     @SuppressWarnings("unchecked")
-    protected <T extends View> T putViewById(int viewId) {
-        T tView = (T) convertView.findViewById(viewId);
+    protected final <T extends View> T putViewById(int viewId) {
+        T tView = findViewByID(convertView, viewId);
         views.put(viewId, tView);
 
         return tView;

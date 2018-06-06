@@ -31,6 +31,8 @@ public abstract class RecycleListAdapter<T, K extends RecyclerView.ViewHolder> e
         this.mData = mData;
     }
 
+
+
     @Override
     public abstract K onCreateViewHolder(ViewGroup parent, int viewType);
 
@@ -38,52 +40,52 @@ public abstract class RecycleListAdapter<T, K extends RecyclerView.ViewHolder> e
     public abstract void onBindViewHolder(K holder, int position);
 
 
-    public final T getItem(int position) {
+    public  T getItem(int position) {
         return mData.get(position);
     }
 
     @Override
-    public final int getItemCount() {
+    public  int getItemCount() {
         return mData == null ? 0 : mData.size();
     }
 
 
-    public final void setData(List<T> data) {
+    public  void setData(List<T> data) {
         this.mData = data;
         notifyDataSetChanged();
     }
 
 
-    public final void addItem2First(boolean isAnim, T item) {
+    public  void addItem2First(boolean isAnim, T item) {
         addItem(isAnim, 0, item);
     }
 
-    public final void addItems2First(boolean isAnim, T... items) {
+    public  void addItems2First(boolean isAnim, T... items) {
         addItems(isAnim, 0, items);
     }
 
 
-    public final void addItems2First(boolean isAnim, List<T> items) {
+    public  void addItems2First(boolean isAnim, List<T> items) {
         addItems(isAnim, 0, items);
     }
 
-    public final void addItem2Last(boolean isAnim, T item) {
+    public  void addItem2Last(boolean isAnim, T item) {
         int count = mData.size();
         addItem(isAnim, count, item);
     }
 
-    public final void addItems2Last(boolean isAnim, T... items) {
+    public  void addItems2Last(boolean isAnim, T... items) {
         int count = mData.size();
         addItems(isAnim, count, items);
     }
 
-    public final void addItems2Last(boolean isAnim, List<T> items) {
+    public  void addItems2Last(boolean isAnim, List<T> items) {
         int count = mData.size();
         addItems(isAnim, count, items);
     }
 
     @SuppressWarnings("unchecked")
-    public final void addItems(boolean isAnim, int index, T... items) {
+    public  void addItems(boolean isAnim, int index, T... items) {
         mData.addAll(index, array2ArrayList(items));
         if (isAnim) {
             notifyItemRangeInserted(index, items.length);
@@ -93,7 +95,7 @@ public abstract class RecycleListAdapter<T, K extends RecyclerView.ViewHolder> e
     }
 
     @SuppressWarnings("unchecked")
-    public final void addItems(boolean isAnim, int index, List<T> items) {
+    public  void addItems(boolean isAnim, int index, List<T> items) {
         mData.addAll(index, items);
         if (isAnim) {
             notifyItemRangeInserted(index, items.size());
@@ -103,7 +105,7 @@ public abstract class RecycleListAdapter<T, K extends RecyclerView.ViewHolder> e
     }
 
 
-    public final void addItem(boolean isAnim, int index, T item) {
+    public  void addItem(boolean isAnim, int index, T item) {
         mData.add(index, item);
         if (isAnim) {
             notifyItemInserted(index);
@@ -112,7 +114,7 @@ public abstract class RecycleListAdapter<T, K extends RecyclerView.ViewHolder> e
         }
     }
 
-    public void rmove(boolean isAnim, T data) {
+    public  void remove(boolean isAnim, T data) {
         int index = mData.indexOf(data);
         if (index >= 0) {
             mData.remove(data);
@@ -124,7 +126,7 @@ public abstract class RecycleListAdapter<T, K extends RecyclerView.ViewHolder> e
         }
     }
 
-    public void removes(boolean isAnim, List<T> data) {
+    public  void removes(boolean isAnim, List<T> data) {
         mData.removeAll(data);
         notifyDataSetChanged();
 
@@ -138,6 +140,55 @@ public abstract class RecycleListAdapter<T, K extends RecyclerView.ViewHolder> e
             }
         }
     }
+
+    public  void addItem2First(T item) {
+        addItem2First(false,  item);
+    }
+
+    public  void addItems2First(T... items) {
+        addItems2First(false, items);
+    }
+
+
+    public  void addItems2First(List<T> items) {
+        addItems2First(false,  items);
+    }
+
+    public  void addItem2Last(T item) {
+        addItem2Last(false, item);
+    }
+
+    public  void addItems2Last(T... items) {
+        addItems2Last(false,items);
+    }
+
+    public  void addItems2Last(List<T> items) {
+        addItems2Last(false,  items);
+    }
+
+    @SuppressWarnings("unchecked")
+    public  void addItems(int index, T... items) {
+        addItems(false,index,items);
+    }
+
+    @SuppressWarnings("unchecked")
+    public  void addItems(int index, List<T> items) {
+        addItems(false,index,items);
+    }
+
+
+    public  void addItem(int index, T item) {
+        addItem(false,index,item);
+    }
+
+    public  void remove(T data) {
+        remove(false,data);
+    }
+
+    public  void removes(List<T> data) {
+        removes(false,data);
+    }
+
 
 
     @SuppressWarnings("unchecked")
