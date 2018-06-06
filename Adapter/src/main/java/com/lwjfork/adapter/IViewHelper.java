@@ -1,5 +1,7 @@
 package com.lwjfork.adapter;
 
+import android.support.annotation.IdRes;
+import android.support.annotation.StringRes;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatAutoCompleteTextView;
 import android.support.v7.widget.AppCompatButton;
@@ -203,6 +205,34 @@ public interface IViewHelper {
         view.setOnClickListener(listener);
     }
 
+    default void setOnClickListener(@IdRes int viewId, View.OnClickListener listener) {
+        View view = findViewByID(viewId);
+        setOnClickListener(view, listener);
+    }
 
+
+
+    default <T extends View> void setOnLongClickListener(T view, View.OnLongClickListener listener) {
+        view.setOnLongClickListener(listener);
+    }
+
+    default void setOnLongClickListener(@IdRes int viewId, View.OnLongClickListener listener) {
+        View view = findViewByID(viewId);
+        setOnLongClickListener(view, listener);
+    }
+
+    default <T extends TextView> void setText(T view, CharSequence des) {
+        view.setText(des);
+    }
+
+    default void setText(@IdRes int viewId, CharSequence des) {
+        TextView tv = findTextViewById(viewId);
+        tv.setText(des);
+    }
+
+    default void setText(@IdRes int viewId, @StringRes int strResId) {
+        TextView tv = findTextViewById(viewId);
+        tv.setText(strResId);
+    }
 
 }
