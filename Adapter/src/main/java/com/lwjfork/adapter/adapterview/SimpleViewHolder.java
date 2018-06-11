@@ -22,6 +22,10 @@ public final class SimpleViewHolder implements IViewHelper {
 
     private View convertView;
 
+    @Override
+    public Context getContextHelper() {
+        return convertView.getContext();
+    }
 
     public static SimpleViewHolder getViewHolder(View convertView, ViewGroup parent, int layoutId) {
         SimpleViewHolder viewHolder = null;

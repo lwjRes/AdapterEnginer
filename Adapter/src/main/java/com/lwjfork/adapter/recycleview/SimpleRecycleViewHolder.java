@@ -38,6 +38,11 @@ public final class SimpleRecycleViewHolder extends RecyclerView.ViewHolder imple
     }
 
 
+    @Override
+    public Context getContextHelper() {
+        return itemView.getContext();
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     public final <T extends View> T findViewByID(int viewId) {

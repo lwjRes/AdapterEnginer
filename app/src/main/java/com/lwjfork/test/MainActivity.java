@@ -1,25 +1,21 @@
 package com.lwjfork.test;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.lwjfork.adapter.IViewHelper;
 import com.lwjfork.adapter.adapterview.ArrayListAdapter;
+import com.lwjfork.adapter.adapterview.MultipleAdapter;
 import com.lwjfork.adapter.adapterview.SimpleViewHolder;
-import com.lwjfork.adapter.adapterview.multiple.MultipleListAdapter;
-import com.lwjfork.adapter.adapterview.multiple.SimpleMultipleListDelegateItem;
-import com.lwjfork.adapter.recycleview.MultipleRecycleListAdapter;
+import com.lwjfork.adapter.recycleview.MultipleRecycleAdapter;
 import com.lwjfork.adapter.recycleview.SimpleRecycleViewHolder;
-import com.lwjfork.adapter.recycleview.multiple.SimpleMultipleRecycleDelegateItem;
-import com.lwjfork.adapter.viewpager.SimplePageAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +29,7 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
         setContentView(R.layout.activity_main);
         ListView lv_test = findViewByID(R.id.lv_test);
         RecyclerView rcv_test = findViewByID(R.id.rcv_test);
-        AppCompatTextView ac_tv = findViewByID(R.id.ac_tv);
-        setOnClickListener(ac_tv, (View view) -> {
-
-        });
-        ArrayListAdapter<String> adapter = new MultipleListAdapter<String>().addTypeDelegateItem(new SimpleMultipleListDelegateItem<String>(android.R.layout.activity_list_item) {
+        ArrayListAdapter<String> adapter = new MultipleAdapter<String>().addTypeDelegateItem(new MultipleAdapter.SimpleDelegateItem<String>(android.R.layout.activity_list_item) {
             @Override
             public boolean isForType(String item, int position, List<String> data) {
                 return position % 2 == 0;
@@ -47,10 +39,10 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
             protected void fillData(String item, SimpleViewHolder viewHolder, int position, List<String> data) {
                 TextView text1 = viewHolder.findViewByID(android.R.id.text1);
                 text1.setText(item);
-                text1.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
+                text1.setBackgroundColor(getColorById(android.R.color.background_dark));
             }
 
-        }).addTypeDelegateItem(new SimpleMultipleListDelegateItem<String>(android.R.layout.activity_list_item) {
+        }).addTypeDelegateItem(new MultipleAdapter.SimpleDelegateItem<String>(android.R.layout.activity_list_item) {
             @Override
             public boolean isForType(String item, int position, List<String> data) {
                 return position % 3 == 0;
@@ -60,9 +52,9 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
             protected void fillData(String item, SimpleViewHolder viewHolder, int position, List<String> data) {
                 TextView text1 = viewHolder.findViewByID(android.R.id.text1);
                 text1.setText(item);
-                text1.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                text1.setBackgroundColor(getColorById(R.color.colorPrimaryDark));
             }
-        }).addTypeDelegateItem(new SimpleMultipleListDelegateItem<String>(android.R.layout.activity_list_item) {
+        }).addTypeDelegateItem(new MultipleAdapter.SimpleDelegateItem<String>(android.R.layout.activity_list_item) {
             @Override
             public boolean isForType(String item, int position, List<String> data) {
                 return position % 4 == 0;
@@ -72,9 +64,9 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
             protected void fillData(String item, SimpleViewHolder viewHolder, int position, List<String> data) {
                 TextView text1 = viewHolder.findViewByID(android.R.id.text1);
                 text1.setText(item);
-                text1.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                text1.setBackgroundColor(getColorById(R.color.colorAccent));
             }
-        }).addTypeDelegateItem(new SimpleMultipleListDelegateItem<String>(android.R.layout.activity_list_item) {
+        }).addTypeDelegateItem(new MultipleAdapter.SimpleDelegateItem<String>(android.R.layout.activity_list_item) {
             @Override
             public boolean isForType(String item, int position, List<String> data) {
                 return true;
@@ -84,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
             protected void fillData(String item, SimpleViewHolder viewHolder, int position, List<String> data) {
                 TextView text1 = viewHolder.findViewByID(android.R.id.text1);
                 text1.setText(item);
-                text1.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                text1.setBackgroundColor(getColorById(R.color.colorAccent));
             }
         });
         lv_test.setAdapter(adapter);
@@ -94,10 +86,8 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
             list.add("" + i);
         }
         adapter.setData(list);
-
-
-        MultipleRecycleListAdapter<String> adapter1 = new MultipleRecycleListAdapter<String>();
-        adapter1.addTypeDelegateItem(new SimpleMultipleRecycleDelegateItem<String>(2, android.R.layout.activity_list_item) {
+        MultipleRecycleAdapter<String> recycleAdapter = new MultipleRecycleAdapter<>();
+        recycleAdapter.addTypeDelegateItem(new MultipleRecycleAdapter.SimpleDelegateItem<String>(2, android.R.layout.activity_list_item) {
             @Override
             public boolean isForType(List<String> datas, int position) {
                 return position % 2 == 0;
@@ -107,10 +97,10 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
             public void onBindViewHolder(List<String> datas, SimpleRecycleViewHolder holder, int position) {
                 TextView text1 = holder.findViewByID(android.R.id.text1);
                 text1.setText(datas.get(position));
-                text1.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                text1.setBackgroundColor(getColorById(R.color.colorAccent));
             }
         });
-        adapter1.addTypeDelegateItem(new SimpleMultipleRecycleDelegateItem<String>(2, android.R.layout.activity_list_item) {
+        recycleAdapter.addTypeDelegateItem(new MultipleRecycleAdapter.SimpleDelegateItem<String>(2, android.R.layout.activity_list_item) {
             @Override
             public boolean isForType(List<String> datas, int position) {
                 return position % 2 == 1;
@@ -120,18 +110,12 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
             public void onBindViewHolder(List<String> datas, SimpleRecycleViewHolder holder, int position) {
                 TextView text1 = holder.findViewByID(android.R.id.text1);
                 text1.setText(datas.get(position));
-                text1.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                text1.setBackgroundColor(getColorById(R.color.colorPrimaryDark));
             }
         });
         rcv_test.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        rcv_test.setAdapter(adapter1);
-        adapter1.setData(list);
-
-
-        SimplePageAdapter<ImageView> pageAdapter = new SimplePageAdapter<>();
-
-
-
+        rcv_test.setAdapter(recycleAdapter);
+        recycleAdapter.setData(list);
 
 
     }
@@ -148,5 +132,8 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
         Log.e("id", id + "");
     }
 
-
+    @Override
+    public Context getContextHelper() {
+        return this;
+    }
 }

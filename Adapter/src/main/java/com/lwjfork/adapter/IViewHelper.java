@@ -1,6 +1,16 @@
 package com.lwjfork.adapter;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.annotation.ArrayRes;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatAutoCompleteTextView;
@@ -50,6 +60,66 @@ public interface IViewHelper {
 
     @SuppressWarnings("unchecked")
     <T extends View> T findViewByID(int viewId);
+
+    Context getContextHelper();
+
+
+    @ColorInt
+    default int getColorById( @ColorRes int id) throws Resources.NotFoundException {
+
+        if (Build.VERSION.SDK_INT >= 23) {
+            return getContextHelper().getColor(id);
+        } else {
+            return getContextHelper().getResources().getColor(id);
+        }
+
+    }
+
+
+    @Nullable
+    default Drawable getDrawableById( @DrawableRes int id) {
+        if (Build.VERSION.SDK_INT >= 23) {
+            return getContextHelper().getDrawable(id);
+        } else {
+            return getContextHelper().getResources().getDrawable(id);
+        }
+    }
+
+
+    @NonNull
+    default String getStringById( @StringRes int id) {
+//        if (Build.VERSION.SDK_INT >= 23) {
+//            return context.getString(id);
+//        } else {
+//            return context.getResources().getString(id);
+//        }
+        return getContextHelper().getString(id);
+    }
+
+    @NonNull
+    default String[] getStringArray( @ArrayRes int strArrayRes) {
+        return getContextHelper().getResources().getStringArray(strArrayRes);
+    }
+
+    @NonNull
+    default int[] getIntArray( @ArrayRes int intArrayRes) {
+        return getContextHelper().getResources().getIntArray(intArrayRes);
+    }
+
+    @NonNull
+    default CharSequence[] getTextArray( @ArrayRes int id) {
+        return getContextHelper().getResources().getTextArray(id);
+    }
+
+    @NonNull
+    default String getString( @StringRes int id, Object... args) {
+        return getContextHelper().getString(id, args);
+    }
+
+    default String getFormatStr(String str, Object args) {
+        return String.format(str, args);
+    }
+
 
     @SuppressWarnings("unchecked")
     default <T extends View> T findViewByID(View parent, int viewId) {
@@ -209,7 +279,6 @@ public interface IViewHelper {
         View view = findViewByID(viewId);
         setOnClickListener(view, listener);
     }
-
 
 
     default <T extends View> void setOnLongClickListener(T view, View.OnLongClickListener listener) {
