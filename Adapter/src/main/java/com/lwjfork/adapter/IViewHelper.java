@@ -55,17 +55,19 @@ import android.widget.ViewFlipper;
  * Des:
  * ====================
  */
-
+@SuppressWarnings({"unchecked",
+        "unused",
+        "deprecation"
+})
 public interface IViewHelper {
 
-    @SuppressWarnings("unchecked")
     <T extends View> T findViewByID(int viewId);
 
     Context getContextHelper();
 
 
     @ColorInt
-    default int getColorById( @ColorRes int id) throws Resources.NotFoundException {
+    default int getColorById(@ColorRes int id) throws Resources.NotFoundException {
 
         if (Build.VERSION.SDK_INT >= 23) {
             return getContextHelper().getColor(id);
@@ -77,7 +79,7 @@ public interface IViewHelper {
 
 
     @Nullable
-    default Drawable getDrawableById( @DrawableRes int id) {
+    default Drawable getDrawableById(@DrawableRes int id) {
         if (Build.VERSION.SDK_INT >= 23) {
             return getContextHelper().getDrawable(id);
         } else {
@@ -87,7 +89,7 @@ public interface IViewHelper {
 
 
     @NonNull
-    default String getStringById( @StringRes int id) {
+    default String getStringById(@StringRes int id) {
 //        if (Build.VERSION.SDK_INT >= 23) {
 //            return context.getString(id);
 //        } else {
@@ -97,22 +99,22 @@ public interface IViewHelper {
     }
 
     @NonNull
-    default String[] getStringArray( @ArrayRes int strArrayRes) {
+    default String[] getStringArray(@ArrayRes int strArrayRes) {
         return getContextHelper().getResources().getStringArray(strArrayRes);
     }
 
     @NonNull
-    default int[] getIntArray( @ArrayRes int intArrayRes) {
+    default int[] getIntArray(@ArrayRes int intArrayRes) {
         return getContextHelper().getResources().getIntArray(intArrayRes);
     }
 
     @NonNull
-    default CharSequence[] getTextArray( @ArrayRes int id) {
+    default CharSequence[] getTextArray(@ArrayRes int id) {
         return getContextHelper().getResources().getTextArray(id);
     }
 
     @NonNull
-    default String getString( @StringRes int id, Object... args) {
+    default String getString(@StringRes int id, Object... args) {
         return getContextHelper().getString(id, args);
     }
 

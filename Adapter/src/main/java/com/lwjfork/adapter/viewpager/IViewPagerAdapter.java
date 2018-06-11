@@ -9,27 +9,21 @@ import java.util.List;
  * Des:
  * ====================
  */
-
+@SuppressWarnings({"UnusedReturnValue", "unused"})
 public interface IViewPagerAdapter<K, V extends IViewPagerAdapter<K, V>> {
 
-    @SuppressWarnings("UnusedReturnValue")
-    public V addTitle(CharSequence charSequence);
+    V addTitle(CharSequence charSequence);
 
-    @SuppressWarnings("UnusedReturnValue")
-    public V addItem(K item);
+    V addItem(K item);
 
-    @SuppressWarnings("UnusedReturnValue")
-    public V addItemTitles(List<CharSequence> itemTitles);
+    V addItemTitles(List<CharSequence> itemTitles);
 
-    @SuppressWarnings("UnusedReturnValue")
-    public V addItems(List<K> items);
+    V addItems(List<K> items);
 
-    @SuppressWarnings("UnusedReturnValue")
     default V addItem(K item, CharSequence itemTitle) {
         return addItem(item).addTitle(itemTitle);
     }
 
-    @SuppressWarnings("UnusedReturnValue")
     default V addItems(List<K> items, List<CharSequence> itemTitles) {
         return addItems(items).addItemTitles(itemTitles);
     }

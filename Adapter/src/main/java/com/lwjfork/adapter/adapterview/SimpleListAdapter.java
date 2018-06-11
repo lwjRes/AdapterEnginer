@@ -3,7 +3,7 @@ package com.lwjfork.adapter.adapterview;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,13 +13,13 @@ import java.util.List;
  * Des:
  * ====================
  */
-
+@SuppressWarnings({"unused", "WeakerAccess",})
 public abstract class SimpleListAdapter<T> extends ArrayListAdapter<T> {
 
     private int layoutId;
 
     public SimpleListAdapter(int layoutId) {
-        this(Collections.<T>emptyList(), layoutId);
+        this(new ArrayList<>(), layoutId);
     }
 
     public SimpleListAdapter(List<T> mData, int layoutId) {

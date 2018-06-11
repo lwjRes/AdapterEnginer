@@ -2,7 +2,7 @@ package com.lwjfork.adapter.recycleview;
 
 import android.view.ViewGroup;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,14 +12,17 @@ import java.util.List;
  * Des:
  * ====================
  */
-
+@SuppressWarnings({
+        "unused",
+        "WeakerAccess",
+})
 public abstract class SimpleRecycleListAdapter<T> extends RecycleListAdapter<T, SimpleRecycleViewHolder> {
 
     private int layoutId;
 
 
     public SimpleRecycleListAdapter(int layoutId) {
-        this(layoutId, Collections.<T>emptyList());
+        this(layoutId, new ArrayList<>());
     }
 
     public SimpleRecycleListAdapter(int layoutId, List<T> mData) {

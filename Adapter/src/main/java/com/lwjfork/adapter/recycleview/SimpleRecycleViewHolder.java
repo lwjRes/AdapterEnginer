@@ -15,7 +15,10 @@ import com.lwjfork.adapter.IViewHelper;
  * Des:
  * ====================
  */
-
+@SuppressWarnings({"unchecked",
+        "unused",
+        "WeakerAccess",
+        })
 public final class SimpleRecycleViewHolder extends RecyclerView.ViewHolder implements IViewHelper {
 
 
@@ -42,8 +45,6 @@ public final class SimpleRecycleViewHolder extends RecyclerView.ViewHolder imple
     public Context getContextHelper() {
         return itemView.getContext();
     }
-
-    @SuppressWarnings("unchecked")
     @Override
     public final <T extends View> T findViewByID(int viewId) {
         View view = views.get(viewId);

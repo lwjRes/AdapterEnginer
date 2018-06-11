@@ -13,7 +13,12 @@ import java.util.List;
  * Des:
  * ====================
  */
-
+@SuppressWarnings({"unchecked",
+        "unused",
+        "WeakerAccess",
+        "SameParameterValue",
+        "UnusedReturnValue"
+})
 public class MultipleAdapter<T> extends ArrayListAdapter<T> {
 
     private IDelegateManager delegateManager;
@@ -33,13 +38,11 @@ public class MultipleAdapter<T> extends ArrayListAdapter<T> {
         delegateManager = createManager();
     }
 
-    @SuppressWarnings("unchecked")
     public MultipleAdapter<T> addTypeDelegateItem(IDelegateItem<T>[] items) {
         delegateManager.addTypeDelegateItem(items);
         return this;
     }
 
-    @SuppressWarnings("unchecked")
     public MultipleAdapter<T> addTypeDelegateItem(IDelegateItem<T> item) {
         delegateManager.addTypeDelegateItem(item);
         return this;
@@ -47,7 +50,6 @@ public class MultipleAdapter<T> extends ArrayListAdapter<T> {
 
 
     @Override
-    @SuppressWarnings("unchecked")
     public int getItemViewType(int position) {
         return delegateManager.getItemViewType(position, getData());
     }
@@ -58,7 +60,6 @@ public class MultipleAdapter<T> extends ArrayListAdapter<T> {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public View getView(int position, View convertView, ViewGroup parent) {
         return delegateManager.getView(position, convertView, parent, getData());
     }
@@ -101,7 +102,6 @@ public class MultipleAdapter<T> extends ArrayListAdapter<T> {
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public View getView(int position, View convertView, ViewGroup parent, List<T> data) {
             for (IDelegateItem item : items) {
                 if (item.isForType(data.get(position), position, data)) {
@@ -121,7 +121,6 @@ public class MultipleAdapter<T> extends ArrayListAdapter<T> {
 
 
         @Override
-        @SuppressWarnings("unchecked")
         public int getItemViewType(int position, List<T> data) {
             int count = items.size();
             for (int i = 0; i < count; i++) {
@@ -152,16 +151,14 @@ public class MultipleAdapter<T> extends ArrayListAdapter<T> {
         int getItemViewType(int position, List<T> data);
 
 
-        @SuppressWarnings({"UnusedReturnValue", "unchecked"})
         IDelegateManager<T> addTypeDelegateItem(IDelegateItem<T>... items);
 
-        @SuppressWarnings("UnusedReturnValue")
         IDelegateManager<T> addTypeDelegateItem(IDelegateItem<T> item);
 
     }
 
     public interface IMultipleType<T> {
-        public View getView(int position, View convertView, ViewGroup parent, List<T> data);
+        View getView(int position, View convertView, ViewGroup parent, List<T> data);
     }
 
 }

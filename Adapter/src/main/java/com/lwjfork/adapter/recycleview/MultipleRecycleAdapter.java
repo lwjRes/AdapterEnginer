@@ -14,7 +14,12 @@ import java.util.List;
  * Des:
  * ====================
  */
-
+@SuppressWarnings({"unchecked",
+        "unused",
+        "WeakerAccess",
+        "SameParameterValue",
+        "UnusedReturnValue"
+})
 public class MultipleRecycleAdapter<T> extends RecycleListAdapter<T, RecyclerView.ViewHolder> {
 
 
@@ -33,13 +38,13 @@ public class MultipleRecycleAdapter<T> extends RecycleListAdapter<T, RecyclerVie
         return new DefaultDelegateManager<>();
     }
 
-    @SuppressWarnings("unchecked")
+
     public final <V extends RecyclerView.ViewHolder> MultipleRecycleAdapter<T> addTypeDelegateItem(IDelegateItem<T, V>[] items) {
         delegateManager.addTypeDelegateItem(items);
         return this;
     }
 
-    @SuppressWarnings("unchecked")
+
     public final <V extends RecyclerView.ViewHolder> MultipleRecycleAdapter<T> addTypeDelegateItem(IDelegateItem<T, V> item) {
         delegateManager.addTypeDelegateItem(item);
         return this;
@@ -95,7 +100,6 @@ public class MultipleRecycleAdapter<T> extends RecycleListAdapter<T, RecyclerVie
         private List<IDelegateItem> items = new ArrayList<>();
 
         @Override
-        @SuppressWarnings("unchecked")
         public int getItemViewType(List<T> datas, int position) {
             for (IDelegateItem item : items) {
                 if (item.isForType(datas, position)) {
@@ -117,7 +121,6 @@ public class MultipleRecycleAdapter<T> extends RecycleListAdapter<T, RecyclerVie
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public void onBindViewHolder(RecyclerView.ViewHolder holder, List<T> datas, int position) {
             for (IDelegateItem item : items) {
                 if (item.isForType(datas, position)) {
@@ -169,7 +172,6 @@ public class MultipleRecycleAdapter<T> extends RecycleListAdapter<T, RecyclerVie
 
         <V extends RecyclerView.ViewHolder> IDelegateManager<T> addTypeDelegateItem(IDelegateItem<T, V>... items);
 
-        @SuppressWarnings("UnusedReturnValue")
         <V extends RecyclerView.ViewHolder> IDelegateManager<T> addTypeDelegateItem(IDelegateItem<T, V> item);
     }
 

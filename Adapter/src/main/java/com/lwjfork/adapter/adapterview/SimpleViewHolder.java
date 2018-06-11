@@ -14,7 +14,7 @@ import com.lwjfork.adapter.IViewHelper;
  * Des:
  * ====================
  */
-
+@SuppressWarnings({"unused", "WeakerAccess", "unchecked"})
 public final class SimpleViewHolder implements IViewHelper {
 
 
@@ -28,7 +28,7 @@ public final class SimpleViewHolder implements IViewHelper {
     }
 
     public static SimpleViewHolder getViewHolder(View convertView, ViewGroup parent, int layoutId) {
-        SimpleViewHolder viewHolder = null;
+        SimpleViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new SimpleViewHolder();
             Context context = parent.getContext();
@@ -52,7 +52,6 @@ public final class SimpleViewHolder implements IViewHelper {
     }
 
 
-    @SuppressWarnings("unchecked")
     @Override
     public final <T extends View> T findViewByID(int viewId) {
         View view = views.get(viewId);

@@ -14,7 +14,10 @@ import java.util.List;
  * Des:
  * ====================
  */
-
+@SuppressWarnings({"unchecked",
+        "unused",
+        "WeakerAccess",
+        "SameParameterValue"})
 public class SimpleFragmentPageAdapter<T extends Fragment> extends FragmentPagerAdapter implements IViewPagerAdapter<T, SimpleFragmentPageAdapter<T>> {
 
 

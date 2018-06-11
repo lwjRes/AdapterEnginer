@@ -120,16 +120,17 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
 
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public <T extends View> T findViewByID(int viewId) {
-        return (T) findViewById(viewId);
-    }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
         Log.e("id", id + "");
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public <T extends View> T findViewByID(int viewId) {
+        return (T) findViewById(viewId);
     }
 
     @Override

@@ -13,7 +13,8 @@ import java.util.List;
  * Des:
  * ====================
  */
-
+@SuppressWarnings({"unchecked",
+        "unused",})
 public class SimplePageAdapter<T extends View> extends PagerAdapter implements IViewPagerAdapter<T, SimplePageAdapter<T>> {
 
 
