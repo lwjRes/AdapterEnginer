@@ -15,7 +15,7 @@ import java.util.List;
  * ====================
  */
 
-public class SimpleFragmentStatePageAdapter<T extends Fragment> extends FragmentStatePagerAdapter {
+public class SimpleFragmentStatePageAdapter<T extends Fragment> extends FragmentStatePagerAdapter implements IViewPagerAdapter<T, SimpleFragmentStatePageAdapter<T>> {
 
 
     private List<T> fragments = new ArrayList<>();
@@ -32,17 +32,6 @@ public class SimpleFragmentStatePageAdapter<T extends Fragment> extends Fragment
         this.fragments = fragments;
         this.titles = titles;
     }
-
-    public void addItem(T frag) {
-        fragments.add(frag);
-        titles.add(null);
-    }
-
-    public void addItem(T frag, CharSequence title) {
-        fragments.add(frag);
-        titles.add(title);
-    }
-
 
     @Override
     public CharSequence getPageTitle(int position) {
@@ -63,6 +52,30 @@ public class SimpleFragmentStatePageAdapter<T extends Fragment> extends Fragment
     @Override
     public int getCount() {
         return fragments.size();
+    }
+
+    @Override
+    public SimpleFragmentStatePageAdapter<T> addTitle(CharSequence charSequence) {
+        titles.add(charSequence);
+        return this;
+    }
+
+    @Override
+    public SimpleFragmentStatePageAdapter<T> addItem(T item) {
+        fragments.add(item);
+        return this;
+    }
+
+    @Override
+    public SimpleFragmentStatePageAdapter<T> addItemTitles(List<CharSequence> itemTitles) {
+        titles = itemTitles;
+        return this;
+    }
+
+    @Override
+    public SimpleFragmentStatePageAdapter<T> addItems(List<T> items) {
+        fragments = items;
+        return this;
     }
 
 }

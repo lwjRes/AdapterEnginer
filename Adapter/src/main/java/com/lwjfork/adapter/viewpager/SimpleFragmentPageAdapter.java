@@ -15,7 +15,7 @@ import java.util.List;
  * ====================
  */
 
-public class SimpleFragmentPageAdapter<T extends Fragment> extends FragmentPagerAdapter {
+public class SimpleFragmentPageAdapter<T extends Fragment> extends FragmentPagerAdapter implements IViewPagerAdapter<T, SimpleFragmentPageAdapter<T>> {
 
 
     private List<T> fragments = new ArrayList<>();
@@ -32,17 +32,6 @@ public class SimpleFragmentPageAdapter<T extends Fragment> extends FragmentPager
         this.fragments = fragments;
         this.titles = titles;
     }
-
-    public void addItem(T frag) {
-        fragments.add(frag);
-        titles.add(null);
-    }
-
-    public void addItem(T frag, CharSequence title) {
-        fragments.add(frag);
-        titles.add(title);
-    }
-
 
     @Override
     public CharSequence getPageTitle(int position) {
@@ -64,4 +53,30 @@ public class SimpleFragmentPageAdapter<T extends Fragment> extends FragmentPager
     public int getCount() {
         return fragments.size();
     }
+
+    @Override
+    public SimpleFragmentPageAdapter<T> addTitle(CharSequence charSequence) {
+        titles.add(charSequence);
+        return this;
+    }
+
+    @Override
+    public SimpleFragmentPageAdapter<T> addItem(T item) {
+        fragments.add(item);
+        return this;
+    }
+
+    @Override
+    public SimpleFragmentPageAdapter<T> addItemTitles(List<CharSequence> itemTitles) {
+        titles = itemTitles;
+        return this;
+    }
+
+    @Override
+    public SimpleFragmentPageAdapter<T> addItems(List<T> items) {
+        fragments = items;
+        return this;
+    }
+
+
 }

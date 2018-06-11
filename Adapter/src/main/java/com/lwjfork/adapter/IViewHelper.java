@@ -225,14 +225,44 @@ public interface IViewHelper {
         view.setText(des);
     }
 
-    default void setText(@IdRes int viewId, CharSequence des) {
-        TextView tv = findTextViewById(viewId);
-        tv.setText(des);
+
+    default TextView setTextView(int id, CharSequence text) {
+        TextView textView = findTextViewById(id);
+        textView.setText(text);
+        return textView;
     }
 
-    default void setText(@IdRes int viewId, @StringRes int strResId) {
-        TextView tv = findTextViewById(viewId);
-        tv.setText(strResId);
+    default TextView setTextView(int id, CharSequence text, View.OnClickListener onClickListener) {
+        TextView textView = findTextViewById(id);
+        textView.setText(text);
+        textView.setOnClickListener(onClickListener);
+        return textView;
+    }
+
+    default ImageView setImageViewResource(int id, int resId) {
+        ImageView imageView = findImageViewById(id);
+        findImageViewById(id).setImageResource(resId);
+        return imageView;
+    }
+
+    default ImageView setImageViewResource(int id, int resId, View.OnClickListener onClickListener) {
+        ImageView imageView = findImageViewById(id);
+        imageView.setImageResource(resId);
+        imageView.setOnClickListener(onClickListener);
+        return imageView;
+    }
+
+    default Button setButton(int id, CharSequence text) {
+        Button button = findButtonById(id);
+        button.setText(text);
+        return button;
+    }
+
+    default Button setButton(int id, CharSequence text, View.OnClickListener onClickListener) {
+        Button button = findButtonById(id);
+        button.setText(text);
+        button.setOnClickListener(onClickListener);
+        return button;
     }
 
 }

@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import com.lwjfork.adapter.adapterview.multiple.SimpleMultipleListDelegateItem;
 import com.lwjfork.adapter.recycleview.MultipleRecycleListAdapter;
 import com.lwjfork.adapter.recycleview.SimpleRecycleViewHolder;
 import com.lwjfork.adapter.recycleview.multiple.SimpleMultipleRecycleDelegateItem;
+import com.lwjfork.adapter.viewpager.SimplePageAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,6 +126,13 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
         rcv_test.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         rcv_test.setAdapter(adapter1);
         adapter1.setData(list);
+
+
+        SimplePageAdapter<ImageView> pageAdapter = new SimplePageAdapter<>();
+
+
+
+
 
     }
 

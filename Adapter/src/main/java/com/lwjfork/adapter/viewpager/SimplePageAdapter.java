@@ -14,56 +14,19 @@ import java.util.List;
  * ====================
  */
 
-public class SimplePageAdapter extends PagerAdapter {
+public class SimplePageAdapter<T extends View> extends PagerAdapter implements IViewPagerAdapter<T, SimplePageAdapter<T>> {
 
 
-    private List<View> views = new ArrayList<>();
+    private List<T> views = new ArrayList<>();
     private List<CharSequence> titles = new ArrayList<>();
 
-    public SimplePageAdapter(ArrayList<View> views) {
+    public SimplePageAdapter(ArrayList<T> views) {
         super();
         this.views = views;
     }
 
     public SimplePageAdapter() {
         super();
-    }
-
-    @SuppressWarnings("UnusedReturnValue")
-    public SimplePageAdapter addTitle(CharSequence charSequence) {
-        titles.add(charSequence);
-        return this;
-    }
-
-
-    @SuppressWarnings("UnusedReturnValue")
-    public SimplePageAdapter addTitles(List<CharSequence> titles) {
-        this.titles = titles;
-        return this;
-    }
-
-    @SuppressWarnings("UnusedReturnValue")
-    public SimplePageAdapter addItem(View itemView) {
-        views.add(itemView);
-        return this;
-    }
-
-
-    @SuppressWarnings("UnusedReturnValue")
-    public SimplePageAdapter addItem(View itemView, CharSequence charSequence) {
-        addItem(itemView).addTitle(charSequence);
-        return this;
-    }
-
-    @SuppressWarnings("UnusedReturnValue")
-    public SimplePageAdapter addItems(List<View> views) {
-        this.views = views;
-        return this;
-    }
-
-    @SuppressWarnings("UnusedReturnValue")
-    public SimplePageAdapter addItems(List<View> views, List<CharSequence> titles) {
-        return addItems(views).addTitles(titles);
     }
 
     @Override
@@ -85,10 +48,6 @@ public class SimplePageAdapter extends PagerAdapter {
         return views.size();
     }
 
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view == object;
-    }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
@@ -104,4 +63,32 @@ public class SimplePageAdapter extends PagerAdapter {
     }
 
 
+    @Override
+    public boolean isViewFromObject(View view, Object object) {
+        return view == object;
+    }
+
+    @Override
+    public SimplePageAdapter<T> addTitle(CharSequence charSequence) {
+        titles.add(charSequence);
+        return this;
+    }
+
+    @Override
+    public SimplePageAdapter<T> addItem(T item) {
+        views.add(item);
+        return this;
+    }
+
+    @Override
+    public SimplePageAdapter<T> addItemTitles(List<CharSequence> itemTitles) {
+        this.titles = itemTitles;
+        return this;
+    }
+
+    @Override
+    public SimplePageAdapter<T> addItems(List<T> items) {
+        this.views = items;
+        return this;
+    }
 }
