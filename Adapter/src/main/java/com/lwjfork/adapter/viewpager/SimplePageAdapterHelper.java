@@ -15,18 +15,18 @@ import java.util.List;
  */
 @SuppressWarnings({"unchecked",
         "unused",})
-public class SimplePageAdapter<T extends View> extends PagerAdapter implements IViewPagerAdapter<T, SimplePageAdapter<T>> {
+public class SimplePageAdapterHelper<T extends View> extends PagerAdapter implements IViewPagerAdapterHelper<T, SimplePageAdapterHelper<T>> {
 
 
     private List<T> views = new ArrayList<>();
     private List<CharSequence> titles = new ArrayList<>();
 
-    public SimplePageAdapter(ArrayList<T> views) {
+    public SimplePageAdapterHelper(ArrayList<T> views) {
         super();
         this.views = views;
     }
 
-    public SimplePageAdapter() {
+    public SimplePageAdapterHelper() {
         super();
     }
 
@@ -70,25 +70,25 @@ public class SimplePageAdapter<T extends View> extends PagerAdapter implements I
     }
 
     @Override
-    public SimplePageAdapter<T> addTitle(CharSequence charSequence) {
+    public SimplePageAdapterHelper<T> addTitle(CharSequence charSequence) {
         titles.add(charSequence);
         return this;
     }
 
     @Override
-    public SimplePageAdapter<T> addItem(T item) {
+    public SimplePageAdapterHelper<T> addItem(T item) {
         views.add(item);
         return this;
     }
 
     @Override
-    public SimplePageAdapter<T> addItemTitles(List<CharSequence> itemTitles) {
+    public SimplePageAdapterHelper<T> addItemTitles(List<CharSequence> itemTitles) {
         this.titles = itemTitles;
         return this;
     }
 
     @Override
-    public SimplePageAdapter<T> addItems(List<T> items) {
+    public SimplePageAdapterHelper<T> addItems(List<T> items) {
         this.views = items;
         return this;
     }

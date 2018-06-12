@@ -1,4 +1,4 @@
-package com.lwjfork.adapter;
+package com.lwjfork.test;
 
 import android.content.Context;
 import android.content.res.Resources;

@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.lwjfork.adapter.IViewHelper;
 import com.lwjfork.adapter.adapterview.ArrayListAdapter;
 import com.lwjfork.adapter.adapterview.MultipleAdapter;
 import com.lwjfork.adapter.adapterview.SimpleViewHolder;
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
 
             @Override
             protected void fillData(String item, SimpleViewHolder viewHolder, int position, List<String> data) {
-                TextView text1 = viewHolder.findViewByID(android.R.id.text1);
+                TextView text1 = viewHolder.findViewById(android.R.id.text1);
                 text1.setText(item);
                 text1.setBackgroundColor(getColorById(android.R.color.background_dark));
             }
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
 
             @Override
             protected void fillData(String item, SimpleViewHolder viewHolder, int position, List<String> data) {
-                TextView text1 = viewHolder.findViewByID(android.R.id.text1);
+                TextView text1 = viewHolder.findViewById(android.R.id.text1);
                 text1.setText(item);
                 text1.setBackgroundColor(getColorById(R.color.colorPrimaryDark));
             }
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
 
             @Override
             protected void fillData(String item, SimpleViewHolder viewHolder, int position, List<String> data) {
-                TextView text1 = viewHolder.findViewByID(android.R.id.text1);
+                TextView text1 = viewHolder.findViewById(android.R.id.text1);
                 text1.setText(item);
                 text1.setBackgroundColor(getColorById(R.color.colorAccent));
             }
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
 
             @Override
             protected void fillData(String item, SimpleViewHolder viewHolder, int position, List<String> data) {
-                TextView text1 = viewHolder.findViewByID(android.R.id.text1);
+                TextView text1 = viewHolder.findViewById(android.R.id.text1);
                 text1.setText(item);
                 text1.setBackgroundColor(getColorById(R.color.colorAccent));
             }
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
 
             @Override
             public void onBindViewHolder(List<String> datas, SimpleRecycleViewHolder holder, int position) {
-                TextView text1 = holder.findViewByID(android.R.id.text1);
+                TextView text1 = holder.findViewById(android.R.id.text1);
                 text1.setText(datas.get(position));
                 text1.setBackgroundColor(getColorById(R.color.colorAccent));
             }
@@ -108,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
 
             @Override
             public void onBindViewHolder(List<String> datas, SimpleRecycleViewHolder holder, int position) {
-                TextView text1 = holder.findViewByID(android.R.id.text1);
+                TextView text1 = holder.findViewById(android.R.id.text1);
                 text1.setText(datas.get(position));
                 text1.setBackgroundColor(getColorById(R.color.colorPrimaryDark));
             }

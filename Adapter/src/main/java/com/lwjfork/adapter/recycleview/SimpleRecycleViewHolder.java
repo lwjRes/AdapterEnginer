@@ -1,12 +1,11 @@
 package com.lwjfork.adapter.recycleview;
 
 import android.content.Context;
+import android.support.annotation.IdRes;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.lwjfork.adapter.IViewHelper;
 
 /**
  * Created:2018/6/1
@@ -18,8 +17,8 @@ import com.lwjfork.adapter.IViewHelper;
 @SuppressWarnings({"unchecked",
         "unused",
         "WeakerAccess",
-        })
-public final class SimpleRecycleViewHolder extends RecyclerView.ViewHolder implements IViewHelper {
+})
+public final class SimpleRecycleViewHolder extends RecyclerView.ViewHolder {
 
 
     public static SimpleRecycleViewHolder getViewHolder(ViewGroup parent, int layoutId) {
@@ -41,12 +40,7 @@ public final class SimpleRecycleViewHolder extends RecyclerView.ViewHolder imple
     }
 
 
-    @Override
-    public Context getContextHelper() {
-        return itemView.getContext();
-    }
-    @Override
-    public final <T extends View> T findViewByID(int viewId) {
+    public final <T extends View> T findViewById(int viewId) {
         View view = views.get(viewId);
         if (view == null) {
             return putViewById(viewId);
@@ -55,10 +49,12 @@ public final class SimpleRecycleViewHolder extends RecyclerView.ViewHolder imple
         }
     }
 
+
     @SuppressWarnings("unchecked")
-    protected final <T extends View> T putViewById(int viewId) {
-        T tView = findViewByID(itemView, viewId);
+    protected final <T extends View> T putViewById(@IdRes int viewId) {
+        T tView = (T) itemView.findViewById(viewId);
         views.put(viewId, tView);
+
         return tView;
     }
 

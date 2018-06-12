@@ -1,11 +1,10 @@
 package com.lwjfork.adapter.adapterview;
 
 import android.content.Context;
+import android.support.annotation.IdRes;
 import android.support.v4.util.SparseArrayCompat;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.lwjfork.adapter.IViewHelper;
 
 /**
  * Created:2018/5/30
@@ -15,17 +14,12 @@ import com.lwjfork.adapter.IViewHelper;
  * ====================
  */
 @SuppressWarnings({"unused", "WeakerAccess", "unchecked"})
-public final class SimpleViewHolder implements IViewHelper {
+public final class SimpleViewHolder {
 
 
     private SparseArrayCompat<View> views = new SparseArrayCompat<>();
 
     private View convertView;
-
-    @Override
-    public Context getContextHelper() {
-        return convertView.getContext();
-    }
 
     public static SimpleViewHolder getViewHolder(View convertView, ViewGroup parent, int layoutId) {
         SimpleViewHolder viewHolder;
@@ -52,8 +46,7 @@ public final class SimpleViewHolder implements IViewHelper {
     }
 
 
-    @Override
-    public final <T extends View> T findViewByID(int viewId) {
+    public final <T extends View> T findViewById(int viewId) {
         View view = views.get(viewId);
         if (view == null) {
             return putViewById(viewId);
@@ -62,9 +55,10 @@ public final class SimpleViewHolder implements IViewHelper {
         }
     }
 
+
     @SuppressWarnings("unchecked")
-    protected final <T extends View> T putViewById(int viewId) {
-        T tView = findViewByID(convertView, viewId);
+    protected final <T extends View> T putViewById(@IdRes int viewId) {
+        T tView = (T) convertView.findViewById(viewId);
         views.put(viewId, tView);
 
         return tView;

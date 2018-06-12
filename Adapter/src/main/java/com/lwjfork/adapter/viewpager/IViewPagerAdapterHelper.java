@@ -4,13 +4,13 @@ import java.util.List;
 
 /**
  * Created:2018/6/8
- * User：liuwenjie
- * Email:liuwnejie180423@credithc.com
+ * User：lwjfork
+ * Email:lwjfork@gmail.com
  * Des:
  * ====================
  */
 @SuppressWarnings({"UnusedReturnValue", "unused"})
-public interface IViewPagerAdapter<K, V extends IViewPagerAdapter<K, V>> {
+public interface IViewPagerAdapterHelper<K, V extends IViewPagerAdapterHelper<K, V>> {
 
     V addTitle(CharSequence charSequence);
 

@@ -2,7 +2,7 @@ package com.lwjfork.adapter.viewpager;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
         "unused",
         "WeakerAccess",
         "SameParameterValue"})
-public class SimpleFragmentPageAdapter<T extends Fragment> extends FragmentPagerAdapter implements IViewPagerAdapter<T, SimpleFragmentPageAdapter<T>> {
+public class SimpleFragmentStatePageAdapterHelper<T extends Fragment> extends FragmentStatePagerAdapter implements IViewPagerAdapterHelper<T, SimpleFragmentStatePageAdapterHelper<T>> {
 
 
     private List<T> fragments = new ArrayList<>();
@@ -26,11 +26,11 @@ public class SimpleFragmentPageAdapter<T extends Fragment> extends FragmentPager
     private List<CharSequence> titles = new ArrayList<>();
 
 
-    public SimpleFragmentPageAdapter(FragmentManager fm) {
+    public SimpleFragmentStatePageAdapterHelper(FragmentManager fm) {
         super(fm);
     }
 
-    public SimpleFragmentPageAdapter(FragmentManager fm, List<T> fragments, List<CharSequence> titles) {
+    public SimpleFragmentStatePageAdapterHelper(FragmentManager fm, ArrayList<T> fragments, ArrayList<CharSequence> titles) {
         super(fm);
         this.fragments = fragments;
         this.titles = titles;
@@ -58,28 +58,27 @@ public class SimpleFragmentPageAdapter<T extends Fragment> extends FragmentPager
     }
 
     @Override
-    public SimpleFragmentPageAdapter<T> addTitle(CharSequence charSequence) {
+    public SimpleFragmentStatePageAdapterHelper<T> addTitle(CharSequence charSequence) {
         titles.add(charSequence);
         return this;
     }
 
     @Override
-    public SimpleFragmentPageAdapter<T> addItem(T item) {
+    public SimpleFragmentStatePageAdapterHelper<T> addItem(T item) {
         fragments.add(item);
         return this;
     }
 
     @Override
-    public SimpleFragmentPageAdapter<T> addItemTitles(List<CharSequence> itemTitles) {
+    public SimpleFragmentStatePageAdapterHelper<T> addItemTitles(List<CharSequence> itemTitles) {
         titles = itemTitles;
         return this;
     }
 
     @Override
-    public SimpleFragmentPageAdapter<T> addItems(List<T> items) {
+    public SimpleFragmentStatePageAdapterHelper<T> addItems(List<T> items) {
         fragments = items;
         return this;
     }
-
 
 }
