@@ -18,7 +18,7 @@ import java.util.List;
         "unused",
         "WeakerAccess",
         "SameParameterValue"})
-public class SimpleFragmentPageAdapterHelper<T extends Fragment> extends FragmentPagerAdapter implements IViewPagerAdapterHelper<T, SimpleFragmentPageAdapterHelper<T>> {
+public class SimpleFragmentPageAdapter<T extends Fragment> extends FragmentPagerAdapter implements IViewPagerAdapterHelper<T, SimpleFragmentPageAdapter<T>> {
 
 
     private List<T> fragments = new ArrayList<>();
@@ -26,11 +26,11 @@ public class SimpleFragmentPageAdapterHelper<T extends Fragment> extends Fragmen
     private List<CharSequence> titles = new ArrayList<>();
 
 
-    public SimpleFragmentPageAdapterHelper(FragmentManager fm) {
+    public SimpleFragmentPageAdapter(FragmentManager fm) {
         super(fm);
     }
 
-    public SimpleFragmentPageAdapterHelper(FragmentManager fm, List<T> fragments, List<CharSequence> titles) {
+    public SimpleFragmentPageAdapter(FragmentManager fm, List<T> fragments, List<CharSequence> titles) {
         super(fm);
         this.fragments = fragments;
         this.titles = titles;
@@ -58,25 +58,25 @@ public class SimpleFragmentPageAdapterHelper<T extends Fragment> extends Fragmen
     }
 
     @Override
-    public SimpleFragmentPageAdapterHelper<T> addTitle(CharSequence charSequence) {
+    public SimpleFragmentPageAdapter<T> addTitle(CharSequence charSequence) {
         titles.add(charSequence);
         return this;
     }
 
     @Override
-    public SimpleFragmentPageAdapterHelper<T> addItem(T item) {
+    public SimpleFragmentPageAdapter<T> addItem(T item) {
         fragments.add(item);
         return this;
     }
 
     @Override
-    public SimpleFragmentPageAdapterHelper<T> addItemTitles(List<CharSequence> itemTitles) {
+    public SimpleFragmentPageAdapter<T> addItemTitles(List<CharSequence> itemTitles) {
         titles = itemTitles;
         return this;
     }
 
     @Override
-    public SimpleFragmentPageAdapterHelper<T> addItems(List<T> items) {
+    public SimpleFragmentPageAdapter<T> addItems(List<T> items) {
         fragments = items;
         return this;
     }

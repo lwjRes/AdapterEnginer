@@ -18,7 +18,7 @@ import java.util.List;
         "unused",
         "WeakerAccess",
         "SameParameterValue"})
-public class SimpleFragmentStatePageAdapterHelper<T extends Fragment> extends FragmentStatePagerAdapter implements IViewPagerAdapterHelper<T, SimpleFragmentStatePageAdapterHelper<T>> {
+public class SimpleFragmentStatePageAdapter<T extends Fragment> extends FragmentStatePagerAdapter implements IViewPagerAdapterHelper<T, SimpleFragmentStatePageAdapter<T>> {
 
 
     private List<T> fragments = new ArrayList<>();
@@ -26,11 +26,11 @@ public class SimpleFragmentStatePageAdapterHelper<T extends Fragment> extends Fr
     private List<CharSequence> titles = new ArrayList<>();
 
 
-    public SimpleFragmentStatePageAdapterHelper(FragmentManager fm) {
+    public SimpleFragmentStatePageAdapter(FragmentManager fm) {
         super(fm);
     }
 
-    public SimpleFragmentStatePageAdapterHelper(FragmentManager fm, ArrayList<T> fragments, ArrayList<CharSequence> titles) {
+    public SimpleFragmentStatePageAdapter(FragmentManager fm, ArrayList<T> fragments, ArrayList<CharSequence> titles) {
         super(fm);
         this.fragments = fragments;
         this.titles = titles;
@@ -58,25 +58,25 @@ public class SimpleFragmentStatePageAdapterHelper<T extends Fragment> extends Fr
     }
 
     @Override
-    public SimpleFragmentStatePageAdapterHelper<T> addTitle(CharSequence charSequence) {
+    public SimpleFragmentStatePageAdapter<T> addTitle(CharSequence charSequence) {
         titles.add(charSequence);
         return this;
     }
 
     @Override
-    public SimpleFragmentStatePageAdapterHelper<T> addItem(T item) {
+    public SimpleFragmentStatePageAdapter<T> addItem(T item) {
         fragments.add(item);
         return this;
     }
 
     @Override
-    public SimpleFragmentStatePageAdapterHelper<T> addItemTitles(List<CharSequence> itemTitles) {
+    public SimpleFragmentStatePageAdapter<T> addItemTitles(List<CharSequence> itemTitles) {
         titles = itemTitles;
         return this;
     }
 
     @Override
-    public SimpleFragmentStatePageAdapterHelper<T> addItems(List<T> items) {
+    public SimpleFragmentStatePageAdapter<T> addItems(List<T> items) {
         fragments = items;
         return this;
     }

@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
         setContentView(R.layout.activity_main);
         ListView lv_test = findViewByID(R.id.lv_test);
         RecyclerView rcv_test = findViewByID(R.id.rcv_test);
+        rcv_test.setVerticalScrollBarEnabled(true);
+
         ArrayListAdapter<String> adapter = new MultipleAdapter<String>().addTypeDelegateItem(new MultipleAdapter.SimpleDelegateItem<String>(android.R.layout.activity_list_item) {
             @Override
             public boolean isForType(String item, int position, List<String> data) {
