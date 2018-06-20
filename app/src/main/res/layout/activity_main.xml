@@ -7,30 +7,10 @@
     tools:context="com.lwjfork.test.MainActivity">
 
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/ac_tv"
+    <com.lwjfork.adapter.viewpager.BannerViewPager
+        android:id="@+id/vp_banner"
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <ListView
-            android:id="@+id/lv_test"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rcv_test"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-
-    </LinearLayout>
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>
