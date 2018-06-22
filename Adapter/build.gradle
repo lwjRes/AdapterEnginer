@@ -31,3 +31,4 @@ dependencies {
     provided "com.android.support:appcompat-v7:$SLVersion"
     provided "com.android.support:design:$SLVersion"
 }
+apply from: "https://raw.githubusercontent.com/lwjfork/scriptlib/master/gradle/bintray.gradle"

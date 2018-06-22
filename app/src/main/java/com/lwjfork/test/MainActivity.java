@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
         setContentView(R.layout.activity_main);
         BannerViewPager vp_banner = findViewByID(R.id.vp_banner);
 
+
+
         SimplePageAdapter<TextView> pageAdapter = new SimplePageAdapter<>();
 
         for (int i = 0; i < 10; i++) {
