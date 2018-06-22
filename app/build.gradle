@@ -34,5 +34,5 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile "com.android.support:appcompat-v7:$SLVersion"
     compile "com.android.support:design:$SLVersion"
-    compile project(':Adapter')
+    compile project(':AndroidAdapter')
 }

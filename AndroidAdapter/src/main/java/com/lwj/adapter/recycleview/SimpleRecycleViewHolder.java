@@ -1,4 +1,4 @@
-package com.lwjfork.adapter.recycleview;
+package com.lwj.adapter.recycleview;
 
 import android.content.Context;
 import android.support.annotation.IdRes;

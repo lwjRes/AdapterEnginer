@@ -1,4 +1,4 @@
-package com.lwjfork.adapter.viewpager;
+package com.lwj.adapter.viewpager;
 
 import java.util.List;
 
