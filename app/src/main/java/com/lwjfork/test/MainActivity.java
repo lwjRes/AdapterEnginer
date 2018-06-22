@@ -5,11 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.lwjfork.adapter.viewpager.BannerViewPager;
-import com.lwjfork.adapter.viewpager.SimplePageAdapter;
+import com.lwj.adapter.viewpager.BannerViewPager;
+import com.lwj.adapter.viewpager.SimplePageAdapter;
 
 public class MainActivity extends AppCompatActivity implements IViewHelper, View.OnClickListener {
 
@@ -19,7 +18,6 @@ public class MainActivity extends AppCompatActivity implements IViewHelper, View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BannerViewPager vp_banner = findViewByID(R.id.vp_banner);
-
 
 
         SimplePageAdapter<TextView> pageAdapter = new SimplePageAdapter<>();

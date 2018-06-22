@@ -1,4 +1,4 @@
-package com.lwjfork.adapter.recycleview;
+package com.lwj.adapter.recycleview;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;

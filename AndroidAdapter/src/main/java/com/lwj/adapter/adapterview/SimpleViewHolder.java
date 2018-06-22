@@ -1,4 +1,4 @@
-package com.lwjfork.adapter.adapterview;
+package com.lwj.adapter.adapterview;
 
 import android.content.Context;
 import android.support.annotation.IdRes;
